@@ -16,16 +16,18 @@ def find_circles(template_file):
     # aspect_ratio_h = filled_h / h
     # aspect_ratio_w = filled_w / w
 
-    template = cv.resize(template, (5100, 6600))
-    filled = cv.resize(filled, (5100, 6600))
+    test_ratio = 0.35
+    adj_w = int(test_ratio * 5100)
+    adj_h = int(test_ratio * 6600)
+    template = cv.resize(template, (adj_w, adj_h))
+    filled = cv.resize(filled, (adj_w, adj_h))
+
 
     radius = round(approx_bubble_ratio_to_page_width * template.shape[1])
     radius_min = round(0.90 * radius)
     radius_max = round(1.10 * radius)
 
     # radius = int(radius_original_ACT * aspect_ratio_w)
-
-
     output = filled.copy()
 
     gray = cv.cvtColor(template, cv.COLOR_BGR2GRAY)
@@ -40,7 +42,7 @@ def find_circles(template_file):
         print(f"{len(detected_circles[0, :])} Circles found")
 
         for (x, y, r) in detected_circles[0, :]:
-            cv.circle(output, (x, y), r, (0, 0, 255), 5)
+            cv.circle(output, (x, y), r, (0, 0, 255), 2)
     else:
         cv.circle(output, (1000, 1000), 40, (0, 255, 0), 20)
 

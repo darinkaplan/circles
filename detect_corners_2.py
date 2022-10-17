@@ -3,7 +3,8 @@ import cv2
 import imutils
 
 # image = cv2.imread('sample_pg1.jpg')
-image = cv2.imread('act_filled.jpg')
+# image = cv2.imread('act_filled.jpg')
+image = cv2.imread('images/ACT_0.jpg')
 
 # convert the input image into
 # grayscale color space
