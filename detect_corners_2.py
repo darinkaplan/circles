@@ -48,6 +48,6 @@ cv2.waitKey(0)
 
 
 # Find my contours
-contours = cv2.findContours(canny, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[0]
+contours = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[0]
 
 cnt = sorted(contours, key=cv2.contourArea, reverse=True)
